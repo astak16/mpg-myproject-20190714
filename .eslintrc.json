@@ -9,7 +9,11 @@
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "App": "true",
+        "getApp": "true",
+        "wx": "true",
+        "Page": "true"
     },
     "parserOptions": {
         "ecmaVersion": 2018,
