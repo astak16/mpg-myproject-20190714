@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    padding: 0 30rpx;
+}
+.container .line{
+    height: 42rpx;
+    width: 2rpx;
+    background: #000;
+    border:1rpx solid rgba(0,0,0,1);
+    margin: 0 15rpx;
+}
+.index-container .plain{
+    font-size: 32rpx;
+    line-height: 32rpx;
+}
+.index-container .index {
+    font-size:60rpx;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+    line-height:60rpx;
+}
+.data-container {
+    display: flex;
+    flex-direction: column;
+}
+.data-container .mouth{
+    font-size:24rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:24rpx;
+}
+.data-container .year {
+    font-size:20rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:20rpx;
+}
