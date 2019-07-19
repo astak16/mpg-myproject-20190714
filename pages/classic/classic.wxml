@@ -1,0 +1,1 @@
+<u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}"></u-magazine>

@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="index-container">
+        <text class="plain">No.</text>
+        <text class="index">{{_index}}</text>
+    </view>
+    <view class="line"></view>
+    <view class="data-container">
+        <text class="mouth">三月</text>
+        <text class="year">2019</text>
+    </view>
+</view>

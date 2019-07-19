@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint *.js pages utils --fix"
+    "eslint": "eslint *.js pages components utils models --fix"
   },
   "repository": {
     "type": "git",

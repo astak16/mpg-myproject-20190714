@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "u-magazine": "/components/magazine/index"
+  }
+}

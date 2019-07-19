@@ -13,12 +13,19 @@
         "App": "true",
         "getApp": "true",
         "wx": "true",
-        "Page": "true"
+        "Page": "true",
+        "Component": "true"
     },
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
+        "class-methods-use-this": "off"
+    },
+    "settings": {
+        "import/ignore": {
+            "node_modules": true
+        }
     }
 }
