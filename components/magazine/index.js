@@ -23,5 +23,5 @@ Component({
         month: month[pubdateArr[1] - 1],
       });
     },
-  }
+  },
 });
