@@ -5,7 +5,7 @@
     </view>
     <view class="line"></view>
     <view class="data-container">
-        <text class="mouth">三月</text>
-        <text class="year">2019</text>
+        <text class="mouth">{{month}}</text>
+        <text class="year">{{year}}</text>
     </view>
 </view>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "u-magazine": "/components/magazine/index"
+    "u-magazine": "/components/magazine/index",
+    "u-like": "/components/like/index"
   }
 }

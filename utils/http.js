@@ -3,12 +3,14 @@ import config from '../config';
 const tips = {
   1: '抱歉有一个错误',
   1005: 'appkey无效，请前往7yue.pro网站申请',
+  2000: '无法进行喜欢操作',
   3000: '期刊不存在',
 };
 export default class HTTP {
   request({
     url, method = 'GET', data = {}, success,
   }) {
+    const that = this;
     wx.request({
       url: config.api_base_url + url,
       method,
@@ -24,11 +26,11 @@ export default class HTTP {
             success(res.data);
           }
         } else {
-          this.showError(res.data.error_code);
+          that.showError(res.data.error_code);
         }
       },
       fail() {
-        this.showError(1);
+        that.showError(1);
       },
     });
   }

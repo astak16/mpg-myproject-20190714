@@ -1,32 +1,27 @@
-// components/calendar/index.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     index: String,
     pubdate: String,
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    _index: 0,
+    year: 0,
+    month: 0,
   },
   observers: {
     index(newVal) {
-      console.log(newVal);
       const val = newVal < 10 ? `0${newVal}` : newVal;
       this.setData({
         _index: val,
       });
     },
-  },
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
-  },
+    pubdate(newVal) {
+      const pubdateArr = newVal.split('-');
+      const month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+      this.setData({
+        year: pubdateArr[0],
+        month: month[pubdateArr[1] - 1],
+      });
+    },
+  }
 });

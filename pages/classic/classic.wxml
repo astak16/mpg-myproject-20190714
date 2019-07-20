@@ -1,1 +1,4 @@
-<u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}"></u-magazine>
+<view class="header-container">
+    <u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}" />
+    <u-like like-status="{{classic.like_status}}" fav-nums="{{classic.fav_nums}}" bind:like="onLike"/>
+</view>

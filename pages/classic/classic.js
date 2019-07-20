@@ -1,6 +1,9 @@
 import ClassicModel from '../../models/classic';
+import LikeModel from '../../models/like';
 
 const classicModel = new ClassicModel();
+const likeModel = new LikeModel();
+
 Page({
 
   /**
@@ -19,6 +22,10 @@ Page({
         classic: res,
       });
     });
+  },
+  onLike(event) {
+    const { behavior } = event.detail;
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
   },
 
   /**
