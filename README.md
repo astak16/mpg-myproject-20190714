@@ -1,6 +1,6 @@
 ## magazine 组件
 
-`observers`观察属性
+### `observers`观察属性
 ```js
 properties: {
     index: {
@@ -46,5 +46,57 @@ observers: {
         _index: val,
       });
     },
+}
+```
+
+### 生命周期
+在`component`生命周期函数中，无法读取`data`或者`properties`中的数据，在初始化组件时，就需要用到`data`、`properties`上的数据，有两种方法
+
+1. 使用`observers`
+```js
+properties: {
+    pubdate: String,
+},
+data: {
+    year: 0,
+    month: 0,
+},
+observers: {
+    pubdate(newVal) {
+      const pubdateArr = newVal.split('-');
+      const month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+      this.setData({
+        year: pubdateArr[0],
+        month: month[pubdateArr[1] - 1],
+      });
+    },
+}
+```
+
+2. 使用生命周期函数`ready`
+
+无法在`attached`、`created`、`ready`中直接操作`data`或`properties`，只有在`ready`中间接操作`data`或者`properties`
+```js
+properties: {
+    pubdate: String,
+},
+data: {
+    year: 0,
+    month: 0,
+},
+lifetimes() {
+    ready() {
+        this.onLoad()
+    }
+},
+methods: {
+    onLoad() {
+        const pubdateArr = newVal.split('-');
+        const month = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+        this.setData({
+            year: pubdateArr[0],
+            month: month[pubdateArr[1] - 1],
+        });
+    }
 }
 ```
