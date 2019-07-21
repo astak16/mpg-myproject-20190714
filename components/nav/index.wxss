@@ -1,0 +1,16 @@
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:588rpx;
+    height:80rpx;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+}
+.nav-title {
+    font-size: 28rpx;
+}
+.icon {
+    height: 80rpx;
+    width: 80rpx;
+}

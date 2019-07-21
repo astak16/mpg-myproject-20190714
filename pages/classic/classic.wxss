@@ -1,1 +1,15 @@
-/* pages/classic/classic.wxss */
+.container {
+    position: relative;
+    height: 100%;
+}
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav {
+    position: absolute;
+    bottom:40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
