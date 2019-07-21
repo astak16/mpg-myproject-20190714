@@ -1,4 +1,12 @@
-<view class="header-container">
-    <u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}" />
-    <u-like like-status="{{classic.like_status}}" fav-nums="{{classic.fav_nums}}" bind:like="onLike"/>
+<view class="container">
+    <view class="header-container">
+        <u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}" />
+        <u-like like-status="{{classic.like_status}}" fav-nums="{{classic.fav_nums}}" bind:like="onLike"/>
+    </view>
+    <u-moive image="{{classic.image}}" content="{{classic.content}}"/>
+    <!-- <u-music image="{{classic.image}}" content="{{classic.content}}"/> -->
+    <!-- <u-essay image="{{classic.image}}" content="{{classic.content}}"/> -->
+    <u-nav class="nav" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" 
+           bind:next="onNext" bind:previous="onPrevious"
+    />
 </view>

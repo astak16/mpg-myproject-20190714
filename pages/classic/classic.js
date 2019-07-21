@@ -5,17 +5,11 @@ const classicModel = new ClassicModel();
 const likeModel = new LikeModel();
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     classic: null,
+    first: false,
+    latest: true,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad() {
     classicModel.getLatest((res) => {
       this.setData({
@@ -25,55 +19,26 @@ Page({
   },
   onLike(event) {
     const { behavior } = event.detail;
+    this.getLike(behavior);
+  },
+  onNext() {
+    this.getClassic('next');
+  },
+  onPrevious() {
+    this.getClassic('previous');
+  },
+  getLike(behavior) {
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  getClassic(nextOrPrevious) {
+    const { index } = this.data.classic;
+    console.log(index);
+    classicModel.getClassic(index, nextOrPrevious, (res) => {
+      this.setData({
+        classic: res,
+        first: classicModel.isFirst(res.index),
+        latest: classicModel.isLatest(res.index),
+      });
+    });
   },
 });

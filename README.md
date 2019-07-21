@@ -20,7 +20,7 @@ properties: {
 2、如果将`index`设置为`String`，调用`setData`后，页面会死循环，这是因为`observer`是个监听器，`properties`变化就会被触发，因为是`String`类型，设置时`index`会相对之前的`index`发生变化从而每次都会会触发`observer`。
 
 解决方法是：用一个新变量来存在这个值
-```
+```js
 properties: {
     index: {
         type: Number,
@@ -97,6 +97,58 @@ methods: {
             year: pubdateArr[0],
             month: month[pubdateArr[1] - 1],
         });
+    }
+}
+```
+
+## nav 组件和 classic 组件
+期刊更新的不是很频繁，可以使用缓存技术，将每次请求到的期刊存入缓存中，每次切换的时候先读取缓存中的期刊，如果有，就不发送请求，如果没有就发送请求。
+
+在切换`classic`组件的时候，怎么知道现在是不是最新的一期或者是第一期。第一期的比较好确定，期刊号是确定的，可以对比当前期刊和确定的期刊号是不是一致就行。关键在于最新的一期期刊怎么确定。在首次进入期刊页面的时候，会去调用最新的期刊，将这个期刊号存入缓存就行。
+```js
+getLatest(sCallback) {
+    this.request({
+      url: 'classic/latest',
+      success: (res) => {
+        this.setCache('latest', res.index);
+        sCallback(res);
+        this.classicKey = this.buildCacheKey(res.index);
+        this.setCache(this.classicKey, res);
+      },
+    });
+}
+```
+
+怎么确定当前期刊是不是最新期刊的或者第一期，这里抽象出了两个方法，直接调用这两个方法就确定是不是最新一期或者第一期
+```js
+isFirst(index) {
+    return index === 1;
+}
+
+isLatest(index) {
+    return index === this.getCache('latest');
+}
+getCache(key) {
+    return wx.getStorageSync(key);
+}
+```
+
+切换期刊时，首先读写缓存，如果缓存有，直接渲染出来；如果没有需要将获取到的期刊存入缓存。
+```js
+getClassic(index, nextOrPrevious, sCallback) {
+    const key = nextOrPrevious === 'next' ? this.buildCacheKey(index + 1) : this.buildCacheKey(index - 1);
+    const classic = this.getCache(key);
+    if (!classic) {
+      this.request({
+        url: `classic/${index}/${nextOrPrevious}`,
+        success: (res) => {
+          const classicKey = this.buildCacheKey(res.index);
+          this.setCache(classicKey, res);
+          sCallback(res);
+        },
+      });
+    } else {
+      sCallback(classic);
     }
 }
 ```

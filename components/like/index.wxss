@@ -13,4 +13,5 @@
     font-weight:400;
     color:rgba(187,187,187,1);
     line-height:24rpx;
+    margin: -10rpx 0 0 5rpx;
 }
