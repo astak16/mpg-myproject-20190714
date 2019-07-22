@@ -1,7 +1,7 @@
 <view class="container">
     <view class="header-container">
         <u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}" />
-        <u-like like-status="{{classic.like_status}}" fav-nums="{{classic.fav_nums}}" bind:like="onLike"/>
+        <u-like like-status="{{likeState}}" fav-nums="{{likeCount}}" bind:like="onLike"/>
     </view>
     <u-moive image="{{classic.image}}" content="{{classic.content}}"/>
     <!-- <u-music image="{{classic.image}}" content="{{classic.content}}"/> -->

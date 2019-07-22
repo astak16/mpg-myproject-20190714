@@ -1,6 +1,6 @@
 Component({
   properties: {
-    likeStatus: Number,
+    likeStatus: Boolean,
     favNums: Number,
   },
   data: {
@@ -11,7 +11,7 @@ Component({
     onLike() {
       const { likeStatus, favNums } = this.properties;
 
-      const count = favNums ? favNums - 1 : favNums + 1;
+      const count = likeStatus ? favNums - 1 : favNums + 1;
       this.setData({
         favNums: count,
         likeStatus: !likeStatus,

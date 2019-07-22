@@ -12,6 +12,13 @@ class LikeModel extends HTTP {
       },
     });
   }
+
+  likeInfo(id, type, success) {
+    this.request({
+      url: `classic/${type}/${id}/favor`,
+      success,
+    });
+  }
 }
 
 export default LikeModel;
