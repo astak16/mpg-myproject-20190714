@@ -14,7 +14,8 @@
         "getApp": "true",
         "wx": "true",
         "Page": "true",
-        "Component": "true"
+        "Component": "true",
+        "Behavior": "true"
     },
     "parserOptions": {
         "ecmaVersion": 2018,

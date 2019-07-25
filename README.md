@@ -152,3 +152,57 @@ getClassic(index, nextOrPrevious, sCallback) {
     }
 }
 ```
+### 自定义组件的`hidden`
+自定义组件没有`hidden`属性特性，可以自己实现。用`properties`接收外部传递进来的`hidden`属性，并绑到原生组件上。
+
+## 音乐播放
+
+这里音乐播放使用的是`wx.getBackgroundAudioManager()`，它返回一个实例`BackgroundAudioManager`
+
+```js
+const bgMusic = wx.getBackgroundAudioManager()
+```
+
+这里实现背景音乐的难点是在切换时候怎么判断当前的音乐状态，有两种方案：
+
+### 方案一：监听切换按钮的事件
+监听切换按钮的事件，当我离开当前期刊时，暂停音乐播放
+
+### 方案二：在当前期刊判断音乐播放状态
+用这种方案可以抽象出了一个状态：
+> `bgMusic.paused`可以获取到当前音乐的播放状态，暂停还是停止，用来设置显示暂停按钮
+> `bgMusic.src === this.data.src` 用来判断在当前音乐期刊中显示暂停按钮，其他音乐期刊显示播放按钮
+
+```js
+recoverStatus() {
+    if (bgMusic.paused) {
+        this.setData({
+            playing: false,
+        });
+        return;
+    }
+    if (bgMusic.src === this.data.src) {
+        this.setData({
+            playing: true,
+        });
+    }
+},
+```
+
+在当前音乐期刊中监听，背景音乐的`onPlay`、`onPause`、`onEnded`、`onStop`，因为之前抽象出了重置状态的函数，这里直接调用就行了。
+```js
+monitorStatus() {
+    bgMusic.onPlay(() => {
+        this.recoverStatus();
+    });
+    bgMusic.onPause(() => {
+        this.recoverStatus();
+    });
+    bgMusic.onEnded(() => {
+        this.recoverStatus();
+    });
+    bgMusic.onStop(() => {
+        this.recoverStatus();
+    });
+},
+```

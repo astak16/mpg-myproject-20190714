@@ -1,5 +1,6 @@
-<view class="classic-container">
+<view hidden="{{hidden}}" class="classic-container">
     <image class="classic-img" src="{{image}}" />
-    <image class="classic-tag" src="/images/components/classic/moive/moive@tag.png" />
+    <image mode="aspectFit" class="classic-tag" src="/images/components/classic/music@tag.png" />
+    <image class="player-img" bind:tap="onPlay" src="{{playing ? pauseSrc : playSrc}}" />
     <text class="classic-content">{{content}}</text>
 </view>

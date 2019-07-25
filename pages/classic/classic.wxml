@@ -3,9 +3,9 @@
         <u-magazine index="{{classic.index}}" pubdate="{{classic.pubdate}}" />
         <u-like like-status="{{likeState}}" fav-nums="{{likeCount}}" bind:like="onLike"/>
     </view>
-    <u-moive image="{{classic.image}}" content="{{classic.content}}"/>
-    <!-- <u-music image="{{classic.image}}" content="{{classic.content}}"/> -->
-    <!-- <u-essay image="{{classic.image}}" content="{{classic.content}}"/> -->
+    <u-moive hidden="{{classic.type !== 100}}" image="{{classic.image}}" content="{{classic.content}}"/>
+    <u-music wx:if="{{classic.type === 200}}" image="{{classic.image}}" content="{{classic.content}}" title="{{classic.title}}" src="{{classic.url}}"/>
+    <u-essay hidden="{{classic.type !== 300}}" image="{{classic.image}}" content="{{classic.content}}"/>
     <u-nav class="nav" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" 
            bind:next="onNext" bind:previous="onPrevious"
     />
