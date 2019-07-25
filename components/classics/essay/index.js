@@ -1,7 +1,9 @@
+import classBeh from '../classic-beh';
+
 Component({
+  behaviors: [classBeh],
   properties: {
-    image: String,
-    content: String,
+
   },
   data: {
 

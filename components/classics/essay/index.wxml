@@ -1,5 +1,5 @@
-<view class="classic-container">
+<view hidden="{{hidden}}" class="classic-container">
     <image class="classic-img" src="{{image}}" />
-    <image class="classic-tag" src="/images/components/classic/moive/moive@tag.png" />
+    <image class="classic-tag" src="/images/components/classic/essay@tag.png" />
     <text class="classic-content">{{content}}</text>
 </view>
