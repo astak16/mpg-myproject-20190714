@@ -206,3 +206,20 @@ monitorStatus() {
     });
 },
 ```
+
+## Promise
+
+把`http`请求改成`Promise`的形式
+```js
+request({ url, data = {}, method = 'GET' }) {
+    return new Promise((resolve, reject) => {
+      this.request1({
+        url, data, method, resolve, reject,
+      });
+    });
+}
+request1({url, resolve, reject, method = 'GET', data = {}}){
+    ...
+}
+```
+用`Promise`的形式可以解决回调地狱的问题

@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="sub-container">
+    <image class="header-img" src="/images/book/quality.png" />
+    <view class="books-container">
+      <block wx:for="{{books}}">
+        <u-book book="{{item}}" />
+      </block>
+    </view>
+  </view>
+</view>
