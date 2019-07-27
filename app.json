@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/classic/classic"
+    "pages/classic/classic",
+    "pages/book-detail/book-detail",
+    "pages/book/book"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +23,7 @@
       },
       {
         "selectedIconPath": "/images/tab/book@highlight.png",
-        "pagePath": "pages/classic/classic",
+        "pagePath": "pages/book/book",
         "text": "书籍",
         "iconPath": "/images/tab/book.png"
       },
@@ -33,6 +35,8 @@
       }
     ]
   },
-  "requiredBackgroundModes": ["audio"],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "sitemapLocation": "sitemap.json"
 }
