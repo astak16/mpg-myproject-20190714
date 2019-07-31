@@ -9,6 +9,17 @@ Page({
    */
   data: {
     books: null,
+    searching: false,
+  },
+  onSearch() {
+    this.setData({
+      searching: true,
+    });
+  },
+  onCancel() {
+    this.setData({
+      searching: false,
+    });
   },
 
   /**
